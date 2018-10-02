@@ -43,7 +43,7 @@ let exampleStr = "Let's have fun with regular expressions!";
 let unRegex = /.un/; // Change this line
 let result = unRegex.test(exampleStr);
 let words = exampleStr.match(unRegex);
-console.log(words);//fun
+console.log(words); //fun
 
 /*Regular Expressions: Match Single Character with Multiple Possibilities*/
 //For example, you want to match "bag", "big", and "bug" but not "bog". You can create the regex /b[aiu]g/ to do this. The [aiu] is the character class that will only match the characters "a", "i", or "u".
@@ -68,3 +68,35 @@ let result = quoteSample.match(myRegex); // Change this line
 let quoteSample = "3 blind mice.";
 let myRegex = /[^aeiou0-9]/ig; // Change this line
 let result = quoteSample.match(myRegex); // Change this line
+
+/*Regular Expressions: Match Characters that Occur One or More Times*/
+//You can use the + character to check if that is the case. Remember, the character or pattern has to be present consecutively. That is, the character has to repeat one after the other.
+let difficultSpelling = "Mississippi";
+let myRegex = /s+/ig; // Change this line
+let result = difficultSpelling.match(myRegex);//["ss", "ss"]
+
+/*Regular Expressions: Match Characters that Occur Zero or More Times*/
+//There's also an option that matches characters that occur zero or more times.
+//The character to do this is the asterisk or star: *.
+let chewieQuote = "Aaaaaaaaaaaaaaaarrrgh!";
+let chewieRegex = /Aa*/; // Change this line
+let result = chewieQuote.match(chewieRegex);
+
+/*Regular Expressions: Find Characters with Lazy Matching*/
+//you can use the ? character to change it to lazy matching. "titanic" matched against the adjusted regex of /t[a-z]*?i/ returns ["ti"].
+let text = "<h1>Winter is coming</h1>";
+let myRegex = /<.*?>/; // Change this line
+let result = text.match(myRegex);//<h1>
+
+/*Regular Expressions: Find One or More Criminals in a Hunt*/
+// example crowd gathering
+let crowd = 'P1P2P3P4P5P6CCCP7P8P9';
+let reCriminals = /C+/; // Change this line
+let matchedCriminals = crowd.match(reCriminals);
+console.log(matchedCriminals);//["CCC", index: 12, input: "P1P2P3P4P5P6CCCP7P8P9", groups: undefined]
+
+/*Regular Expressions: Match Beginning String Patterns*/
+//Outside of a character set, the caret is used to search for patterns at the beginning of strings.
+let rickyAndCal = "Cal and Ricky both like racing.";
+let calRegex = /^Cal/; // Change this line
+let result = calRegex.test(rickyAndCal);
