@@ -100,3 +100,15 @@ console.log(matchedCriminals);//["CCC", index: 12, input: "P1P2P3P4P5P6CCCP7P8P9
 let rickyAndCal = "Cal and Ricky both like racing.";
 let calRegex = /^Cal/; // Change this line
 let result = calRegex.test(rickyAndCal);
+
+/*Regular Expressions: Restrict Possible Usernames*/
+//1) The only numbers in the username have to be at the end. There can be zero or more of them at the end.
+//2) Username letters can be lowercase and uppercase.
+//3) Usernames have to be at least two characters long. A two-letter username can only use alphabet letter characters.
+
+let username = "JackOfAllTrades";
+let userCheck = /[^\d][\w\w]|[^\d]\d+$/; 
+let userCheck2 = /^[\w]{2,}\d*$/;
+//{3,}: three or more times for the word character
+// Change this line
+let result = userCheck.test(userCheck2);
