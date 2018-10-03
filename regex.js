@@ -105,10 +105,60 @@ let result = calRegex.test(rickyAndCal);
 //1) The only numbers in the username have to be at the end. There can be zero or more of them at the end.
 //2) Username letters can be lowercase and uppercase.
 //3) Usernames have to be at least two characters long. A two-letter username can only use alphabet letter characters.
-
 let username = "JackOfAllTrades";
 let userCheck = /[^\d][\w\w]|[^\d]\d+$/; 
 let userCheck2 = /^[\w]{2,}\d*$/;
 //{3,}: three or more times for the word character
 // Change this line
 let result = userCheck.test(userCheck2);
+
+/*Regular Expressions: Specify Exact Number of Matches*/
+//For example, to match only the word "hah" with the letter a 3 times, your regex would be /ha{3}h/
+//Change the regex timRegex to match the word "Timber" only when it has four letter m's.
+
+let timStr = "Timmmmber";
+let timRegex = /Tim{4}ber/; // Change this line
+let result = timRegex.test(timStr);
+
+/*Regular Expressions: Check for All or None*/
+//You can specify the possible existence of an element with a question mark, ?. This checks for zero or one of the preceding element. You can think of this symbol as saying the previous element is optional.
+let favWord = "favorite";
+let favRegex = /favou?rite/; // Change this line
+let result = favRegex.test(favWord);
+
+/*Regular Expressions: Positive and Negative Lookahead*/
+//A positive lookahead will look to make sure the element in the search pattern is there, but won't actually match it. A positive lookahead is used as (?=...) where the ... is the required part that is not matched.
+//Use lookaheads in the pwRegex to match passwords that are greater than 5 characters long and have two consecutive digits.
+let sampleWord = "astronaut";
+let pwRegex = /(?=\w{5,})(?=\D*\d{2})/; // Change this line
+let result = pwRegex.test(sampleWord);
+
+/*Regular Expressions: Match Whitespace*/
+let sample = "Whitespace is important in separating words";
+let countWhiteSpace = /\s/g; // Change this line
+let result = sample.match(countWhiteSpace);
+
+/*Regular Expressions: Match Non-Whitespace Characters*/
+let sample = "Whitespace is important in separating words";
+let countNonWhiteSpace = /\S/g; // Change this line
+let result = sample.match(countNonWhiteSpace);
+
+/*Regular Expressions: Specify Upper and Lower Number of Matches*/
+//Change the regex ohRegex to match only 3 to 6 letter h's in the word "Oh no".
+let ohStr = "Ohhh no";
+let ohRegex = /Oh{3,6}\sno/; // Change this line
+let result = ohRegex.test(ohStr);
+
+/*Regular Expressions: Specify Only the Lower Number of Matches*/
+//Change the regex haRegex to match the word "Hazzah" only when it has four or more letter z's.
+let haStr = "Hazzzzah";
+let haRegex = /Haz{4,}ah/; // Change this line
+let result = haRegex.test(haStr);
+
+/*Regular Expressions: Reuse Patterns Using Capture Groups*/
+//You can search for repeat substrings using capture groups. Parentheses, ( and ), are used to find repeat substrings. You put the regex of the pattern that will repeat in between the parentheses.
+//To specify where that repeat string will appear, you use a backslash (\) and then a number. This number starts at 1 and increases with each additional capture group you use. An example would be \1 to match the first group.
+//Use capture groups in reRegex to match numbers that are repeated only three times in a string, each separated by a space.
+let repeatNum = "42 42 42";
+let reRegex = /^(\d+)\s\1\s\1$/; // Change this line
+let result = reRegex.test(repeatNum);
